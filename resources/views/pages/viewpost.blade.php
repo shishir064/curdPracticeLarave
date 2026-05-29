@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 
 @section('title', 'View Post')
 
 @section('content')
-<div class="max-w-5xl mx-auto mt-10 px-4">
+<div class="w-full  mt-10 px-4">
 
-    <div class="w-[65vw] wbg-white shadow-md rounded-lg overflow-hidden border">
+    <div class=" wbg-white shadow-md rounded-lg overflow-hidden border">
 
        @if(session('success'))
 

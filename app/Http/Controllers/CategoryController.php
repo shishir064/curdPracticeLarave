@@ -23,6 +23,6 @@ class CategoryController extends Controller
             'category' => $request->category,
             ]);
 
-        return view('pages.categories', compact('categories'))->with('success', 'Category created successfully');
+        return view('pages.category', compact('categories'))->with('success', 'Category created successfully');
     }
 }

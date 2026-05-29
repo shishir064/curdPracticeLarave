@@ -28,12 +28,18 @@
             <a href="{{ route('category.form') }}" class="block p-3 rounded hover:bg-blue-700">
                 Add Category
             </a>
+            <a href="{{ route('tag.form') }}" class="block p-3 rounded hover:bg-blue-700">
+                Add Tags
+            </a>
 
             <a href="{{ route('createpost') }}" class="block p-3 rounded hover:bg-blue-700">
                 Create Post
             </a>
+            <a href="{{ route('viewpost') }}" class="block p-3 rounded hover:bg-blue-700">
+                View Post
+            </a>
 
-            <a href="{{ route('index') }}" class="block p-3 rounded hover:bg-blue-700">
+            <a href="{{ route('indexx') }}" class="block p-3 rounded hover:bg-blue-700">
                 Users
             </a>
 
@@ -55,12 +61,10 @@
                 Dashboard
             </h2>
 
-            <button
-            class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
-
-                Logout
-
-            </button>
+            <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button class="bg-red-600 px-4 py-2 rounded text-white" type="submit">Logout</button>
+                </form>
 
         </header>
 

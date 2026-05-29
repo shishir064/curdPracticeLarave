@@ -32,8 +32,8 @@ class User extends Authenticatable
         ];
     }
 
-    public function Categories()
+    public function userDetail()
     {
-        return $this->hasMany(Category::class);
+        return $this->hasOne(UserDetail::class);
     }
 }

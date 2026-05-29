@@ -3,6 +3,8 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostControllers;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,10 +16,10 @@ Route::get('/login', [AuthController::class, 'login'])->name('login.form');
 Route::post('/login', [AuthController::class, 'loginStore'])->name('login');
 Route::get('/signup', [AuthController::class, 'signup'])->name('signup.form');
 Route::post('/signup', [AuthController::class, 'signupStore'])->name('signup');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/createpost', [PostControllers::class, 'createPost'])->name('createpostform');
 Route::post('/createpost', [PostControllers::class, 'poststore'])->name('createpost');
-
 Route::get('/viewpost', [PostControllers::class, 'viewPost'])->name('viewpost');
 Route::get('/editpost/{id}', [PostControllers::class, 'editPost'])->name('editpost');
 Route::put('/updatepost/{id}', [PostControllers::class, 'updatePost'])->name('updatepost');
@@ -27,4 +29,16 @@ Route::get('/addcategory', [CategoryController::class, 'categoryForm'])->name('c
 Route::post('/addcategory', [CategoryController::class, 'categoriesStore'])->name('category.store');
 Route::get('/viewcategories', [CategoryController::class, 'categoriesStore'])->name('categories.store');
 
-Route::get('/user', [UserController::class, 'index'])->name('index');
+Route::get('/user', [UserController::class, 'index'])->name('indexx');
+
+Route::post('/userstore', [UserController::class, 'userStore'])->name('user.store');
+
+
+Route::get('/users/view', [ProfileController::class, 'show'])->name('user.profile.show');
+Route::get('/users/view/{id}', [ProfileController::class, 'index'])->name('user.profile');
+Route::post('/users/profile/store/{id}', [ProfileController::class, 'store'])->middleware('auth')->name('user.profile.store');
+Route::get('/users/profile/edit/{id}', [ProfileController::class, 'edit'])->middleware('auth')->name('user.profile.edit');
+
+
+//tag
+Route::get('/tags', [TagController::class, 'index'])->name('tag.form');

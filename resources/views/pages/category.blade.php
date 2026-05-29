@@ -5,7 +5,7 @@
     <div class="w-full  px-4">
 
         <h1 class="text-3xl font-bold text-center mb-8">
-            Create Blog
+            Create Category
         </h1>
 
         <form action="{{ route('category.store') }}" method="POST" class="space-y-5" enctype="multipart/form-data">
