@@ -40,6 +40,9 @@
                     <th class="px-6 py-3 text-center border-b">
                         Category
                     </th>
+                    <th class="px-6 py-3 text-center border-b">
+                        Tag
+                    </th>
 
                     <th class="px-6 py-3 text-center border-b">
                         Edit
@@ -77,6 +80,15 @@
                     <td class="px-6 py-4 border-b text-center">
                         {{ $post->category?->category }}
                     </td>
+
+                    
+                        
+                    <td class="px-6 py-4 border-b text-center">
+                        @foreach ($post->tags as $tag)
+                        {{  $tag->tag }},
+                         @endforeach
+                    </td>
+                   
 
                     <td class="px-6 py-4 border-b text-center">
 

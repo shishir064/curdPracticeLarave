@@ -29,7 +29,9 @@ class TagController extends Controller
      */
     public function store(StoretagRequest $request)
     {
-        //
+        $validated = $request->validated();
+        tag::create($validated);
+        return redirect()->route('tag.form')->with('success', 'Tag created successfully');
     }
 
     /**

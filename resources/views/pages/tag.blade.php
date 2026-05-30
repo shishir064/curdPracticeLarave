@@ -8,10 +8,10 @@
             Create Tags
         </h1>
 
-        <form action="" method="POST" class="space-y-5" enctype="multipart/form-data">
+        <form action="{{ route('tag.store')}}" method="POST" class="space-y-5" enctype="multipart/form-data">
             @csrf
             @if (session('success'))
-                <div class="text-green-500">
+                <div class="text-green-600 bg-green-100 px-4 py-3 rounded">
                     <h1>{{ session('success') }}</h1>
                 </div>
             @endif

@@ -8,6 +8,17 @@
         <h1 class="text-3xl font-bold text-center mb-8">
             Create Blog
         </h1>
+        
+
+        @if ($errors->any())
+    <div class="text-red-500">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
         <form action="{{ route('createpost') }}" method="POST" class="space-y-5" enctype="multipart/form-data">
             @csrf
@@ -31,6 +42,14 @@
                 </label>
                 
                 <x-blog-category :categories="$categories"/>
+                
+            </div>
+            <div>
+                <label class="block mb-2 font-semibold">
+                    Select Tag
+                </label>
+                
+                <x-tag-category :tags="$tags"/>
                 
             </div>
 

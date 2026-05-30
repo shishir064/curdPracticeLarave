@@ -42,3 +42,4 @@ Route::get('/users/profile/edit/{id}', [ProfileController::class, 'edit'])->midd
 
 //tag
 Route::get('/tags', [TagController::class, 'index'])->name('tag.form');
+Route::post('/tags/create', [TagController::class, 'store'])->name('tag.store');

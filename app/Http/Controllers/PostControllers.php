@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Tag;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -11,8 +12,9 @@ class PostControllers extends Controller
 {
     public function createPost()
     {
+        $tags = Tag::all();
         $categories = Category::all();
-        return view('pages.createpost', compact('categories'));
+        return view('pages.createpost', compact('categories'), compact('tags'));
     }
 
     public function poststore(Request $request)
@@ -34,6 +36,7 @@ class PostControllers extends Controller
         $request->validate([
             'title' => 'required',
             'category' => 'required',
+            'tags' => 'required',
             'body' => 'required',
             'image' => 'required',
         ]);
@@ -42,26 +45,30 @@ class PostControllers extends Controller
         $path = $request->file('image')->store('images', 'public');
         // $path = Storage::putFile('images', $request->file('image'));
 
-        Post::create([
+       $post = Post::create([
             'title' => $request->title,
             'category_id' => $request->category,
             'body' => $request->body,
             'image' => $path
         ]);
+        $post->tags()->sync($request->tags);
+
         return redirect()->route('createpostform')->with('success', 'Post created successfully');
     }
 
     public function viewPost()
     {
-        $posts = Post::all();
-        return view('pages.viewpost', compact('posts'));
+        $tags = Tag::all();
+        $posts = Post::latest()->get();
+        return view('pages.viewpost', compact('posts'), compact('tags'));
     }
 
     public function editPost($id)
     {
+        $tags = Tag::all();
         $categories = Category::all();
         $post = Post::find($id);
-        return view('pages.editpost', compact('post'), compact('categories'));
+        return view('pages.editpost', compact('post','categories', 'tags'));
     }
 
     public function updatePost(Request $request, $id)
@@ -69,6 +76,7 @@ class PostControllers extends Controller
         $post = Post::find($id);
         $post->title = $request->title;
         $post->category_id = $request->category_id;
+
         $post->body = $request->body;
         if ($request->hasFile('image')) {
 
@@ -82,6 +90,7 @@ class PostControllers extends Controller
             $post->image = $path;
         }
         $post->save();
+        $post->tags()->sync($request->tags);
         return redirect()->route('viewpost')->with('success', 'Post updated successfully');
     }
 

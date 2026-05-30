@@ -43,16 +43,31 @@
                     <input type="file" name="image">
                 </div>
 
-                
+
                 <div>
                     <label class="block mb-2 font-medium">
                         Category
                     </label>
-                    <select name="category_id" class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                    <select name="category_id"
+                        class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
                         @foreach ($categories as $category)
-                        <option value="{{ $category->id }}" {{ $category->id == $post->category_id ? 'selected' : '' }}>{{ $category->category }}</option> 
-                    @endforeach
+                            <option value="{{ $category->id }}" {{ $category->id == $post->category_id ? 'selected' : '' }}>
+                                {{ $category->category }}</option>
+                        @endforeach
                     </select>
+                </div>
+
+                <div class=" ">
+                    <label class="block mb-2 font-medium">
+                        Select Tag
+                    </label>
+                    @foreach ($tags as $tag)
+                        <label class="flex items-center gap-2">
+                            {{-- {{  in_array($tag->id, $post->tags->pluck('id')->toArray()) ? 'checked' : ''}} --}}
+                            <input type="checkbox" name="tags[]" value="{{ $tag->id }}" {{ $post->tags->contains($tag) ? 'checked' : '' }} class="rounded">
+                            <span>{{ $tag->tag }}</span>
+                        </label>
+                    @endforeach
                 </div>
 
                 <!-- Body -->

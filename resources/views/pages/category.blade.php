@@ -3,7 +3,11 @@
 
 @section('content')
     <div class="w-full  px-4">
-
+        @if (session('success'))
+                <div class="text-green-600 bg-green-100 px-4 py-3 rounded">
+                    <h1>{{ session('success') }}</h1>
+                </div>
+            @endif
         <h1 class="text-3xl font-bold text-center mb-8">
             Create Category
         </h1>
