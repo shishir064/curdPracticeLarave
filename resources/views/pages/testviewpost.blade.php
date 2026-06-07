@@ -24,10 +24,6 @@
                         SN
                     </th>
 
-                    <th class="px-6 py-3 text-center border-b">
-                        Image
-                    </th>
-
                     <th class="px-6 py-3 text-left border-b">
                         Title
                     </th>
@@ -35,13 +31,6 @@
 
                     <th class="px-6 py-3 text-left border-b">
                         Description
-                    </th>
-
-                    <th class="px-6 py-3 text-center border-b">
-                        Category
-                    </th>
-                    <th class="px-6 py-3 text-center border-b">
-                        Tag
                     </th>
 
                     <th class="px-6 py-3 text-center border-b">
@@ -53,7 +42,7 @@
 
             <tbody>
 
-                @foreach($posts as $post)
+                @foreach($testposts as $testpost)
 
                 <tr class="hover:bg-gray-50">
 
@@ -61,40 +50,25 @@
                         {{ $loop->iteration }}
                     </td>
 
-                    <td class="text-center"><img src="{{ asset('storage/' . $post->image) }}" width="120">
-                    </td>
-
                     <td class="px-6 py-4 border-b">
-                        {{ $post->title }}
+                        {{ $testpost->title }}
                     </td>
 
 
                     <td class="px-6 py-4 border-b">
-                        {{ Str::limit($post->body,50) }}
-                    </td>
-
-                    <td class="px-6 py-4 border-b text-center">
-                        {{ $post->category?->category }}
-                    </td>
-
-                    
-                        
-                    <td class="px-6 py-4 border-b text-center">
-                        @foreach ($post->tags as $tag)
-                        {{  $tag->tag }},
-                         @endforeach
+                        {{ Str::limit($testpost->body,50) }}
                     </td>
                    
 
                     <td class="px-6 py-4 border-b text-center flex gap-4">
 
                         <a
-                            href="{{  route('editpost', ['id' => $post->id]) }}"
+                            href="{{  route('test.view.post.edit', $testpost->id) }}"
                             class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
                             Edit
                         </a>
                         <form
-                            action=" {{ route('deletepost', ['id' => $post->id]) }}"
+                            action=""
                             method="POST">
 
                             @csrf

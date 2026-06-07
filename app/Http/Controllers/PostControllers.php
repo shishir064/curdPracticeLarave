@@ -3,18 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Models\Tag;
 use App\Models\Post;
+use App\Models\Tag;
+use App\Models\TestPost;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class PostControllers extends Controller
 {
+
     public function createPost()
     {
         $tags = Tag::all();
         $categories = Category::all();
-        return view('pages.createpost', compact('categories'), compact('tags'));
+
+        // if(Auth::user()->hasRole('admin')) {
+        //     return view('pages.createpost', compact('categories'), compact('tags'));
+        // }
+       
+        return view('pages.createpost',['hotel' => new TestPost()], compact('categories','tags'));
+   
     }
 
     public function poststore(Request $request)

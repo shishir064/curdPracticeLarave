@@ -11,7 +11,7 @@
                 Edit Post
             </h2>
 
-            <form action="{{ route('updatepost', ['id' => $post->id]) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('createpost') }}" method="POST" enctype="multipart/form-data">
 
                 @csrf
                 @method('PUT')

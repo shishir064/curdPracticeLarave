@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostControllers;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\TestPostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +21,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/createpost', [PostControllers::class, 'createPost'])->name('createpostform');
 Route::post('/createpost', [PostControllers::class, 'poststore'])->name('createpost');
-Route::get('/viewpost', [PostControllers::class, 'viewPost'])->name('viewpost');
+Route::get('/viewpost', [PostControllers::class, 'viewPost'])->name('viewposts');
 Route::get('/editpost/{id}', [PostControllers::class, 'editPost'])->name('editpost');
 Route::put('/updatepost/{id}', [PostControllers::class, 'updatePost'])->name('updatepost');
 Route::delete('/deletepost/{id}', [PostControllers::class, 'deletePost'])->name('deletepost');
@@ -43,3 +44,9 @@ Route::get('/users/profile/edit/{id}', [ProfileController::class, 'edit'])->midd
 //tag
 Route::get('/tags', [TagController::class, 'index'])->name('tag.form');
 Route::post('/tags/create', [TagController::class, 'store'])->name('tag.store');
+
+Route::get('/test/post', [TestPostController::class, 'create'])->name('test.post');
+Route::post('/test/post', [TestPostController::class, 'store'])->name('test.post.store');
+Route::get('/test/edit/{id}', [TestPostController::class, 'edit'])->name('test.view.post.edit');
+Route::put('/test/updatepost/{id}', [TestPostController::class, 'update'])->name('test.post.update');
+Route::get('/test/viewpost', [TestPostController::class, 'testviewpost'])->name('test.view.post');
