@@ -14,6 +14,9 @@
         </div>
 
        @endif
+       <div>
+        <form action="{{route('viewposts')}}"></form>
+       </div>
 
         <table class="w-full border-collapse">
 

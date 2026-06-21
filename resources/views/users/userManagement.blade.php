@@ -14,6 +14,12 @@
 
                 <div class=" flex items-center justify-between mb-6">
                     <h3 class="text-2xl mb-4">Mrs/Mr <span class="font-bold">{{ $users[0]->name }}</span></h3>
+
+                    <form action="{{ route('indexx') }}" method="GET">
+                        <span><input type="text" name="search" placeholder="search user"
+                                class="border rounded py-1 px-3"></span>
+                        <button class="px-3 py-1 bg-black rounded text-white">Search</button>
+                    </form>
                     <!-- You can open the modal using ID.showModal() method -->
                     <button class="$$btn p-4 bg-indigo-600 text-white rounded" onclick="my_modal_3.showModal()">Add
                         Details</button>
@@ -26,9 +32,10 @@
                                 User Information Form
                             </h2>
 
-                            <form action="{{ route('user.store') }}" method="POST" class="space-y-4" enctype="multipart/form-data">
+                            <form action="{{ route('user.store') }}" method="POST" class="space-y-4"
+                                enctype="multipart/form-data">
                                 @csrf
-                                
+
                                 <!-- Email -->
                                 {{-- <div>
                                     <label class="block mb-1 font-medium">
@@ -83,14 +90,15 @@
                             </form>
                         </div>
                     </dialog>
+
                 </div>
                 @if ($errors->any())
-    <div>
-        @foreach ($errors->all() as $error)
-            <p>{{ $error }}</p>
-        @endforeach
-    </div>
-@endif
+                    <div>
+                        @foreach ($errors->all() as $error)
+                            <p>{{ $error }}</p>
+                        @endforeach
+                    </div>
+                @endif
                 <table class="w-full border border-gray-300">
 
 
@@ -128,7 +136,8 @@
                                 </td>
 
                                 <td class="border p-3 text-center">
-                                    <a href="{{ route('user.profile', $user->id) }}" class="text-indigo-600 hover:underline pr-3">View</a>
+                                    <a href="{{ route('user.profile', $user->id) }}"
+                                        class="text-indigo-600 hover:underline pr-3">View</a>
                                 </td>
 
                             </tr>

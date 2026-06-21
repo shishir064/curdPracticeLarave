@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4468c3cf7e2e436669871b868d3ff74d",
+    "content-hash": "73dec07ad718348521ae04ed337bd497",
     "packages": [
         {
             "name": "brick/math",
@@ -3299,6 +3299,85 @@
                 "source": "https://github.com/ramsey/uuid/tree/4.9.2"
             },
             "time": "2025-12-14T04:43:48+00:00"
+        },
+        {
+            "name": "rawilk/laravel-settings",
+            "version": "v4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rawilk/laravel-settings.git",
+                "reference": "7f989dfd534d0f880ad36a7edcc64b86c5825493"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rawilk/laravel-settings/zipball/7f989dfd534d0f880ad36a7edcc64b86c5825493",
+                "reference": "7f989dfd534d0f880ad36a7edcc64b86c5825493",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^12.0|^13.0",
+                "illuminate/support": "^12.0|^13.0",
+                "php": "^8.2",
+                "spatie/laravel-package-tools": "^1.13"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.2",
+                "orchestra/testbench": "^10.0|^11.0",
+                "pestphp/pest": "^3.0|^4.0",
+                "pestphp/pest-plugin-laravel": "^3.0|^4.0",
+                "spatie/laravel-ray": "^1.31"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "Settings": "Rawilk\\Settings\\Facades\\Settings"
+                    },
+                    "providers": [
+                        "Rawilk\\Settings\\SettingsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Rawilk\\Settings\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Randall Wilk",
+                    "email": "randall@randallwilk.dev",
+                    "homepage": "https://randallwilk.dev",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Store Laravel application settings in the database.",
+            "homepage": "https://github.com/rawilk/laravel-settings",
+            "keywords": [
+                "Settings",
+                "database settings",
+                "eloquent model settings",
+                "laravel-settings",
+                "rawilk"
+            ],
+            "support": {
+                "issues": "https://github.com/rawilk/laravel-settings/issues",
+                "source": "https://github.com/rawilk/laravel-settings/tree/v4.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/rawilk",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-05-16T16:34:51+00:00"
         },
         {
             "name": "spatie/laravel-package-tools",
